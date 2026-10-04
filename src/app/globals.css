@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --line: #e3e5e9;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --muted: #7d7c77;
+  --grid: #e9e9e5;
+  /* グラフ系列色（検証済みの参照パレットのスロット 1〜3） */
+  --cool: #2a78d6;
+  --warm: #eb6834;
+  --aqua: #1baf7a;
+  --band: rgba(235, 104, 52, 0.14);
+  --danger: #c0392b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --bg: #111110;
+    --surface: #1a1a19;
+    --surface-2: #242422;
+    --line: #2f2f2c;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #8f8e86;
+    --grid: #2c2c2a;
+    --cool: #3987e5;
+    --warm: #d95926;
+    --aqua: #199e70;
+    --band: rgba(217, 89, 38, 0.22);
+    --danger: #e66767;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #111110;
+  --surface: #1a1a19;
+  --surface-2: #242422;
+  --line: #2f2f2c;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --muted: #8f8e86;
+  --grid: #2c2c2a;
+  --cool: #3987e5;
+  --warm: #d95926;
+  --aqua: #199e70;
+  --band: rgba(217, 89, 38, 0.22);
+  --danger: #e66767;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-cool: var(--cool);
+  --color-warm: var(--warm);
+  --color-aqua: var(--aqua);
+  --color-danger: var(--danger);
+  --font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI",
+    "Meiryo", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor::after {
+  content: "▍";
+  margin-left: 2px;
+  color: var(--muted);
+  animation: blink 1s steps(1) infinite;
+}
